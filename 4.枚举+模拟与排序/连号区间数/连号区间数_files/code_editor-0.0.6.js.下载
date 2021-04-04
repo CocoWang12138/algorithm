@@ -1,0 +1,316 @@
+$(document).ready(function () {
+
+    let code_editor = ace.edit("code_editor");
+
+    let save_code = function () {
+        if (typeof(localStorage) !== "undefined") {
+            let $problem_id = PROBLEM_ID;
+            let $user_id = "anonymous";
+            if (user_state.is_authenticated){
+                $user_id = user_state.user_id;
+            }
+            let $language = $('.code_editor_option_language').children('select').children(':selected').text();
+
+            let filename = $problem_id + '-' + $user_id + '-' + $language;
+            localStorage.setItem(filename, code_editor.getValue());
+        }
+    };
+
+    let refresh_code = function () {
+        let $language = $('.code_editor_option_language').children('select').children(':selected').text();
+        if ($language in problem_code_show_mappings){
+            code_editor.setValue(problem_code_show_mappings[$language], -1);
+        }
+        else {
+            code_editor.setValue('', -1);
+        }
+    };
+
+    let load_code = function () {
+        if (GLOBAL_PROBLEM_MODE === "challenge") {
+            refresh_code();
+            return;
+        }
+
+        let has_set_value = false;
+        if (typeof(localStorage) !== "undefined") {
+            code_editor.setValue('', -1);
+            let $problem_id = PROBLEM_ID;
+            let $user_id = "anonymous";
+            if (user_state.is_authenticated){
+                $user_id = user_state.user_id;
+            }
+            let $language = $('.code_editor_option_language').children('select').children(':selected').text();
+
+            let filename = $problem_id + '-' + $user_id + '-' + $language;
+            let code = localStorage.getItem(filename);
+
+            if (typeof code === "string" && code.length > 0){
+                code_editor.setValue(code, -1);
+                has_set_value = true;
+            }
+            else if ($user_id !== "anonymous"){
+                let filename = $problem_id + '-anonymous-' + $language;
+                code = localStorage.getItem(filename);
+                if (typeof code === "string" && code.length > 0){
+                    code_editor.setValue(code, -1);
+                    has_set_value = true;
+                }
+            }
+        }
+        if (!has_set_value) {
+            refresh_code();
+        }
+    };
+
+    let update_code_complete = function () {
+        if (typeof(localStorage) !== "undefined") {  // 读取本地配置
+            let level = parseInt(localStorage.getItem('problem_editor_pref_code_complete'));  // 1：无补全；2：单词级补全；3：模板级补全
+            if (!level) level = 2;  // 默认为单词级补全
+            $(".code_editor_option_code_complete").children('select').val(level);
+
+            let staticWordCompleter = {
+                getCompletions: function(editor, session, pos, prefix, callback) {
+                    let itemList = EDITOR_CODE_TEMPLATES;
+                    console.log(prefix);
+                    let real_list = [];
+                    for (let i = 0; i < itemList.length; i ++ ) {
+                        if (prefix.startsWith(itemList[i].prefix)) {
+                            real_list.push(itemList[i]);
+                        }
+                    }
+
+                    callback(null, real_list.map(function(item) {
+                        return {
+                            caption: item.caption,
+                            value: item.value,
+                            meta: item.meta,
+                            score: item.score,
+                        };
+                    }));
+                }
+            };
+
+            let langTools = ace.require('ace/ext/language_tools');
+            let completers = [];
+            if (level === 2 || level === 3) completers.push(langTools.textCompleter);
+
+            let language = $('.code_editor_option_language').children('select').children(':selected').text();
+            if (level === 3 && language === "C++") completers.push(staticWordCompleter);  // 目前只为C++提供模板级补全
+
+            code_editor.completers = completers;
+         }
+    };
+
+    let update_language = function () {
+        let language = $('.code_editor_option_language').children('select').children(':selected').text();
+        let language_mapping = code_editor_name_config_mappings[language];
+        code_editor.session.setMode("ace/mode/" + language_mapping);
+        update_code_complete();  // 变更语言后，需要重设代码补全级别。目前只为C++提供模板级补全。
+    };
+
+    let update_theme = function () {
+        let theme = $('.code_editor_option_theme').first().children('select').children(':selected').text();
+        let theme_mapping = code_editor_name_config_mappings[theme];
+        code_editor.setTheme("ace/theme/" + theme_mapping);
+    };
+
+    let update_key_binding = function () {
+        let key_binding = $('.code_editor_option_key_binding').first().children('select').children(':selected').text();
+        let key_binding_mapping = code_editor_name_config_mappings[key_binding];
+        if (key_binding_mapping === "null"){
+            code_editor.setKeyboardHandler(null);
+        }
+        else{
+            code_editor.setKeyboardHandler('ace/keyboard/' + key_binding_mapping);
+        }
+    };
+
+    let update_tab_size = function () {
+        let tab_size = $('.code_editor_option_tab_size').first().children('select').children(':selected').text();
+        let tab_size_mapping = code_editor_name_config_mappings[tab_size];
+        code_editor.setOption("tabSize", parseInt(tab_size_mapping));
+    };
+
+    let pref_font_size = 11;
+    if (typeof(localStorage) !== "undefined") {  // 读取本地配置
+         let size = localStorage.getItem('problem_editor_pref_font_size');
+         if (size !== null) pref_font_size = size;
+     }
+
+    let code_editor_init = function(){
+        code_editor.setShowPrintMargin(false);
+        update_language();
+        update_theme();
+        update_key_binding();
+        update_tab_size();
+        update_code_complete();
+
+        code_editor.setOptions({
+            fontSize: `${pref_font_size}pt`,
+            maxLines: Infinity,
+            enableBasicAutocompletion: true,
+            enableSnippets: false,
+            enableLiveAutocompletion: true,
+        });
+    };
+
+    code_editor_init();
+
+    $('#code_editor').on( 'mousewheel DOMMouseScroll', function ( e ) {
+         if (e.ctrlKey) {
+             let e0 = e.originalEvent;
+             let delta = e0.wheelDelta || -e0.detail;
+             if (delta > 0) {
+                 pref_font_size ++ ;
+                 if (pref_font_size > 60) {
+                     pref_font_size = 60;
+                 }
+             } else {
+                 pref_font_size -- ;
+                 if (pref_font_size < 5) {
+                     pref_font_size = 5;
+                 }
+             }
+             code_editor.setOptions({
+                 'fontSize': `${pref_font_size}pt`,
+             });
+
+             if (typeof(localStorage) !== "undefined") {  // 在本地保存修改
+                 localStorage.setItem('problem_editor_pref_font_size', pref_font_size);
+             }
+
+             e.preventDefault();
+         }
+    });
+
+    let $code_editor_option_language = $('.code_editor_option_language');
+
+    $code_editor_option_language.click(function () {
+        save_code();
+    });
+
+    $('#code-editor-refresh-btn').click(function () {
+        refresh_code();
+    });
+
+    $code_editor_option_language.children('select').change(function () {
+        let language = $(this).children(':selected').text();
+        let language_mapping = code_editor_name_config_mappings[language];
+        code_editor.session.setMode("ace/mode/" + language_mapping);
+        load_code();
+        if (user_state.is_authenticated) {
+            let $form = $('#code-eidtor-option-update-language-form');
+            let hrefUrl = $form.attr('action');
+            let postData = $form.serialize() + "&name=" + encodeURIComponent(language);
+            $.ajax({
+                url: hrefUrl,
+                type: "POST",
+                data: postData,
+                dataType: "Json",
+                cache: false,
+                timeout: 60000,
+                success: function (resp) {
+
+                },
+                error: function () {
+                }
+            });
+        }
+    });
+
+    $('.code_editor_option_theme').children('select').change(function () {
+        let theme = $(this).children(':selected').text();
+        let theme_mapping = code_editor_name_config_mappings[theme];
+        code_editor.setTheme("ace/theme/" + theme_mapping);
+
+        if (user_state.is_authenticated) {
+            let $form = $('#code-eidtor-option-update-theme-form');
+            let hrefUrl = $form.attr('action');
+            let postData = $form.serialize() + "&name=" + encodeURIComponent(theme);
+            $.ajax({
+                url: hrefUrl,
+                type: "POST",
+                data: postData,
+                dataType: "Json",
+                cache: false,
+                timeout: 60000,
+                success: function (resp) {
+
+                },
+                error: function () {
+                }
+            });
+        }
+    });
+
+    $('.code_editor_option_key_binding').children('select').change(function () {
+        let key_binding = $(this).children(':selected').text();
+        let key_binding_mapping = code_editor_name_config_mappings[key_binding];
+        if (key_binding_mapping === "null"){
+            code_editor.setKeyboardHandler(null);
+        }
+        else{
+            code_editor.setKeyboardHandler('ace/keyboard/' + key_binding_mapping);
+        }
+
+        if (user_state.is_authenticated) {
+            let $form = $('#code-eidtor-option-update-key-binding-form');
+            let hrefUrl = $form.attr('action');
+            let postData = $form.serialize() + "&name=" + encodeURIComponent(key_binding);
+            $.ajax({
+                url: hrefUrl,
+                type: "POST",
+                data: postData,
+                dataType: "Json",
+                cache: false,
+                timeout: 60000,
+                success: function (resp) {
+
+                },
+                error: function () {
+                }
+            });
+        }
+    });
+
+    $('.code_editor_option_tab_size').children('select').change(function () {
+        let tab_size = $(this).children(':selected').text();
+        let tab_size_mapping = code_editor_name_config_mappings[tab_size];
+        code_editor.setOption("tabSize", parseInt(tab_size_mapping));
+
+        if (user_state.is_authenticated) {
+            let $form = $('#code-eidtor-option-update-tab-size-form');
+            let hrefUrl = $form.attr('action');
+            let postData = $form.serialize() + "&name=" + encodeURIComponent(tab_size);
+            $.ajax({
+                url: hrefUrl,
+                type: "POST",
+                data: postData,
+                dataType: "Json",
+                cache: false,
+                timeout: 60000,
+                success: function (resp) {
+
+                },
+                error: function () {
+                }
+            });
+        }
+    });
+
+    $('.code_editor_option_code_complete').children('select').change(function () {
+        let level = parseInt($(this).children(':selected').val());
+        if (typeof(localStorage) !== "undefined") {  // 读取本地配置
+            localStorage.setItem("problem_editor_pref_code_complete", level);
+            update_code_complete();
+        }
+    });
+
+    load_code();
+
+    onbeforeunload_functions.push(function () {
+        save_code();
+        return false;
+    });
+});

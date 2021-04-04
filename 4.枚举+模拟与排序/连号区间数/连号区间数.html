@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://www.acwing.com/problem/content/1212/ -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style id="autocompletion.css">.ace_editor.ace_autocomplete .ace_marker-layer .ace_active-line {    background-color: #CAD6FA;    z-index: 1;}.ace_dark.ace_editor.ace_autocomplete .ace_marker-layer .ace_active-line {    background-color: #3a674e;}.ace_editor.ace_autocomplete .ace_line-hover {    border: 1px solid #abbffe;    margin-top: -1px;    background: rgba(233,233,253,0.4);    position: absolute;    z-index: 2;}.ace_dark.ace_editor.ace_autocomplete .ace_line-hover {    border: 1px solid rgba(109, 150, 13, 0.8);    background: rgba(58, 103, 78, 0.62);}.ace_completion-meta {    opacity: 0.5;    margin: 0.9em;}.ace_editor.ace_autocomplete .ace_completion-highlight{    color: #2d69c7;}.ace_dark.ace_editor.ace_autocomplete .ace_completion-highlight{    color: #93ca12;}.ace_editor.ace_autocomplete {    width: 300px;    z-index: 200000;    border: 1px lightgray solid;    position: fixed;    box-shadow: 2px 3px 5px rgba(0,0,0,.2);    line-height: 1.4;    background: #fefefe;    color: #111;}.ace_dark.ace_editor.ace_autocomplete {    border: 1px #484747 solid;    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.51);    line-height: 1.4;    background: #25282c;    color: #c1c1c1;}
+/*# sourceURL=ace/css/autocompletion.css */</style><style>.ace_snippet-marker {    -moz-box-sizing: border-box;    box-sizing: border-box;    background: rgba(194, 193, 208, 0.09);    border: 1px dotted rgba(211, 208, 235, 0.62);    position: absolute;}</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style><style id="ace_editor.css">.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}.ace_editor {position: relative;overflow: hidden;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;box-sizing: border-box;min-width: 100%;contain: style size layout;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;contain: style size layout;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {position: absolute;top: 0;left: 0;right: 0;padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {contain: strict;position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;contain: strict;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: transparent;color: inherit;z-index: 1000;opacity: 1;}.ace_composition_placeholder { color: transparent }.ace_composition_marker { border-bottom: 1px solid;position: absolute;border-radius: 0;margin-top: 1px;}[ace_nocontext=true] {transform: none!important;filter: none!important;perspective: none!important;clip-path: none!important;mask : none!important;contain: none!important;perspective: none!important;mix-blend-mode: initial!important;z-index: auto;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;height: 1000000px;contain: style size layout;}.ace_text-layer {font: inherit !important;position: absolute;height: 1000000px;width: 1000000px;contain: style size layout;}.ace_text-layer > .ace_line, .ace_text-layer > .ace_line_group {contain: style size layout;position: absolute;top: 0;left: 0;right: 0;}.ace_hidpi .ace_text-layer,.ace_hidpi .ace_gutter-layer,.ace_hidpi .ace_content,.ace_hidpi .ace_gutter {contain: strict;will-change: transform;}.ace_hidpi .ace_text-layer > .ace_line, .ace_hidpi .ace_text-layer > .ace_line_group {contain: strict;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {transition: opacity 0.18s;}.ace_animate-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: step-end;animation-name: blink-ace-animate;animation-iteration-count: infinite;}.ace_animate-blinking.ace_smooth-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: ease-in-out;animation-name: blink-ace-animate-smooth;}@keyframes blink-ace-animate {from, to { opacity: 1; }60% { opacity: 0; }}@keyframes blink-ace-animate-smooth {from, to { opacity: 1; }45% { opacity: 1; }60% { opacity: 0; }85% { opacity: 0; }}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;box-sizing: border-box;}.ace_line .ace_fold {box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_inline_button {border: 1px solid lightgray;display: inline-block;margin: -1px 8px;padding: 0 5px;pointer-events: auto;cursor: pointer;}.ace_inline_button:hover {border-color: gray;background: rgba(200,200,200,0.2);display: inline-block;pointer-events: auto;}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_text-input-ios {position: absolute !important;top: -100000px !important;left: -100000px !important;}
+/*# sourceURL=ace/css/ace_editor.css */</style>
+    <title>1210. 连号区间数 - AcWing题库</title>
+    
+
+
+<meta name="keywords" content="第四届蓝桥杯省赛C++B组,第四届蓝桥杯省赛JAVAB组，连号区间数，AcWing题库">
+<meta name="description" content="高质量的算法题库">
+<meta name="baidu-site-verification" content="UW1SBiMHO7">
+<meta name="google-site-verification" content="YTgbOq_0TDShJS6KTcUYCQoAAZTm308SJ7ibsafBD_Y">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" type="image/png" href="./连号区间数_files/favicon(1).ico">
+<link rel="stylesheet" href="./连号区间数_files/bootstrap.min.css">
+<link rel="stylesheet" href="./连号区间数_files/bootstrap-toggle.min.css">
+<link rel="stylesheet" href="./连号区间数_files/signform.css">
+<link rel="stylesheet" href="./连号区间数_files/jquery-ui.min.css">
+
+    <link rel="stylesheet" href="./连号区间数_files/success_modal.css">
+
+
+    
+        <link rel="stylesheet" href="./连号区间数_files/chat_list-0.0.1.css">
+    
+
+<!--link rel="stylesheet" href="https://cdn.acwing.com/static/web/css/pace.css"-->
+<!--script src="https://cdn.acwing.com/static/web/js/pace.js"></script-->
+<script>
+    let onbeforeunload_functions = [];
+</script>
+
+
+<style>
+    /* latin */
+    @font-face {
+      font-family: 'Satisfy';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Satisfy Regular'), local('Satisfy-Regular'), url(https://cdn.acwing.com/static/web/fonts/rP2Hp2yn6lkG50LoCZOIHQ.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* latin-ext */
+    @font-face {
+      font-family: 'Lato';
+      font-style: italic;
+      font-weight: 400;
+      src: local('Lato Italic'), local('Lato-Italic'), url(https://cdn.acwing.com/static/web/fonts/S6u8w4BMUTPHjxsAUi-qJCY.woff2) format('woff2');
+      unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Lato';
+      font-style: italic;
+      font-weight: 400;
+      src: local('Lato Italic'), local('Lato-Italic'), url(https://cdn.acwing.com/static/web/fonts/S6u8w4BMUTPHjxsAXC-q.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Lato';
+      font-style: italic;
+      font-weight: 700;
+      src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://cdn.acwing.com/static/web/fonts/S6u_w4BMUTPHjxsI5wq_FQft1dw.woff2) format('woff2');
+      unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Lato';
+      font-style: italic;
+      font-weight: 700;
+      src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://cdn.acwing.com/static/web/fonts/S6u_w4BMUTPHjxsI5wq_Gwft.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Lato Regular'), local('Lato-Regular'), url(https://cdn.acwing.com/static/web/fonts/S6uyw4BMUTPHjxAwXjeu.woff2) format('woff2');
+      unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Lato Regular'), local('Lato-Regular'), url(https://cdn.acwing.com/static/web/fonts/S6uyw4BMUTPHjx4wXg.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 700;
+      src: local('Lato Bold'), local('Lato-Bold'), url(https://cdn.acwing.com/static/web/fonts/S6u9w4BMUTPHh6UVSwaPGR_p.woff2) format('woff2');
+      unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 700;
+      src: local('Lato Bold'), local('Lato-Bold'), url(https://cdn.acwing.com/static/web/fonts/S6u9w4BMUTPHh6UVSwiPGQ.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+</style>
+<script src="./连号区间数_files/jquery-3.3.1.min.js.下载"></script>
+<script src="./连号区间数_files/bootstrap.min.js.下载"></script>
+<script src="./连号区间数_files/bootstrap-toggle.min.js.下载"></script>
+<script src="./连号区间数_files/jquery-ui.min.js.下载"></script>
+<script src="./连号区间数_files/jquery.cookie.js.下载"></script>
+<script>
+    $(document).ready(function () {
+        var csrftoken = $.cookie('csrftoken');
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            },
+            cache: true
+        });
+    });
+</script>
+<script src="./连号区间数_files/signform-0.0.1.js.下载"></script>
+<script src="./连号区间数_files/handlebars-v1.3.0.js.下载"></script>
+<script src="./连号区间数_files/effect_anchor.js.下载"></script>
+
+    <script>
+    let chat_state = {
+        me_id: 72867,
+    };
+</script>
+<script src="./连号区间数_files/mode-c_cpp.js.下载"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Main; src: url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff?rev=2.6.1') format('woff'), url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf?rev=2.6.1') format('opentype')}
+@font-face {font-family: MathJax_Main-bold; src: url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff?rev=2.6.1') format('woff'), url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf?rev=2.6.1') format('opentype')}
+@font-face {font-family: MathJax_Main-italic; src: url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff?rev=2.6.1') format('woff'), url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf?rev=2.6.1') format('opentype')}
+@font-face {font-family: MathJax_Math-italic; src: url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff?rev=2.6.1') format('woff'), url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf?rev=2.6.1') format('opentype')}
+@font-face {font-family: MathJax_Caligraphic; src: url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff?rev=2.6.1') format('woff'), url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf?rev=2.6.1') format('opentype')}
+@font-face {font-family: MathJax_Size1; src: url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff?rev=2.6.1') format('woff'), url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf?rev=2.6.1') format('opentype')}
+@font-face {font-family: MathJax_Size2; src: url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff?rev=2.6.1') format('woff'), url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf?rev=2.6.1') format('opentype')}
+@font-face {font-family: MathJax_Size3; src: url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff?rev=2.6.1') format('woff'), url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf?rev=2.6.1') format('opentype')}
+@font-face {font-family: MathJax_Size4; src: url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff?rev=2.6.1') format('woff'), url('https://cdn.acwing.com/static/MathJax-2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf?rev=2.6.1') format('opentype')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head><body id="acwing_body" style="min-height: 100vh;"><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div><div style="display: none;">
+    <div id="message_template_me">
+        <div class="row" style="margin: 0; margin-bottom: 10px;">
+            <div class="col-xs-2 pull-right" style="width: 30px; padding: 0; margin-right: 10px;">
+                <a href="https://message_host_space_url/">
+                    <img class="img-responsive img-circle" width="30px" height="30px" src="./连号区间数_files/favicon.ico" alt="我的头像">
+                </a>
+            </div>
+            <div class="col-xs-10 pull-right">
+                <span class="chat-bubble-me pull-right" style="word-break: break-all;">
+                    message_content
+                </span>
+            </div>
+        </div>
+    </div>
+    <div id="message_template_you">
+        <div class="row" style="margin: 0; margin-bottom: 10px;">
+            <div class="col-xs-2" style="width: 30px; padding: 0; margin-left: 10px;">
+                <a href="https://message_host_space_url/">
+                    <img class="img-responsive img-circle" width="30px" height="30px" src="./连号区间数_files/favicon.ico" alt="好友头像">
+                </a>
+            </div>
+            <div class="col-xs-10">
+                <span class="chat-bubble-you pull-left" style="word-break: break-all;">
+                    message_content
+                </span>
+            </div>
+        </div>
+    </div>
+    <div id="message_create_time">
+        <div class="text-center">
+            <span class="chat-time-format">message create time</span>
+        </div>
+        <br>
+    </div>
+    <div id="message_code_template">
+        <a id="message_code_template_0_message_id_0" style="cursor:pointer;">
+            <img src="./连号区间数_files/code.png" width="75px" style="margin: -17px -22px -14px -22px;" alt="代码">
+        </a>
+    </div>
+    <div id="message_emoji_gif_template">
+        <a style="cursor:pointer;">
+            <img src="./连号区间数_files/favicon.ico" width="100px" style="margin: 0" title="emoji_gif_description" alt="表情动画">
+        </a>
+    </div>
+</div>
+    <script src="./连号区间数_files/utils.js.下载"></script>
+
+
+
+    <script src="./连号区间数_files/ace.js.下载" type="text/javascript" charset="utf-8"></script>
+    <script src="./连号区间数_files/ext-language_tools-0.0.1.js.下载"></script>
+    <script src="./连号区间数_files/code_template-0.0.0.min.js.下载"></script>
+    <script src="./连号区间数_files/utils-0.0.1.js.下载"></script>
+    <script src="./连号区间数_files/emoji-data.js.下载"></script>
+
+
+
+
+<script>
+    let user_state = {
+        is_authenticated: true,
+        is_mobile: false,
+    };
+    if (user_state.is_authenticated){
+        user_state.user_id = 72867;
+    }
+    
+</script>
+<script>
+    let GLOBAL_COMMENT_SONS = {};
+</script>
+<style>
+    
+        #acwing_body {
+            background: white url("https://cdn.acwing.com/static/web/img/background.png") fixed;
+            background-size: auto;
+        }
+    
+
+    
+    @media (min-width: 768px) and (max-width: 1000px) {
+       .collapse {
+           display: none !important;
+       }
+    }
+</style>
+
+
+<link rel="stylesheet" href="./连号区间数_files/ace.min.css">
+<link rel="stylesheet" href="./连号区间数_files/martor.min.css">
+
+    <link rel="stylesheet" href="./连号区间数_files/martor.css">
+
+<link rel="stylesheet" href="./连号区间数_files/comment.css">
+
+
+    <link rel="stylesheet" href="./连号区间数_files/style-0.0.8.css">
+
+<link rel="stylesheet" href="./连号区间数_files/navbar.css">
+
+    
+
+<link rel="stylesheet" href="./连号区间数_files/base-0.0.4.css">
+<link rel="stylesheet" href="./连号区间数_files/base-0.0.1.css">
+<link rel="stylesheet" href="./连号区间数_files/base-0.0.4(1).css">
+<script>
+    let DESKTOP_STATE_WINDOW_OPERATE_OPEN_URL = "/file_system/gui/window/operate/open/666/";
+    let DESKTOP_STATE_TASKBAR_SEARCH_URL = "/file_system/gui/search/base/search/";
+</script>
+<script src="./连号区间数_files/file_explorer-0.0.5.min.js.下载"></script>
+<script src="./连号区间数_files/gui-0.0.15.min.js.下载"></script>
+<script>
+    $(document).ready(function () {
+        let urls = {
+            add: "/file_system/file/operation/content/add/",
+            update: "/file_system/file/operation/content/update/",
+            delete: "/file_system/file/operation/content/delete/",
+            update_refactor_rename: "/file_system/file/operation/content/update/refactor/rename/",
+            command_ls: "/file_system/file/operation/content/command/ls/",
+            command_cp: "/file_system/file/operation/content/command/cp/",
+            command_mv: "/file_system/file/operation/content/command/mv/",
+            command_read: "/file_system/file/operation/content/command/read/",
+        };
+        desktop_state.os.builtin.api.file.operation.set(urls);
+
+        let applications = {
+            file_explorer: 284475,
+            ac_editor: 172575,
+            ac_saber: 118289,
+            settings: 589618,
+            ac_chat: 994425,
+        };
+        desktop_state.os.builtin.application.set(applications);
+
+        let configs = {
+            media_url: "https://cdn.acwing.com/media/",
+        };
+        desktop_state.os.builtin.settings.set(configs);
+
+        let auto_open_apps = [];
+        
+            auto_open_apps.push({
+                title: "AC Chat",
+                icon: "https://cdn.acwing.com/media//file_system/file/application/icon/2220490481555590627-128_UQONKkk.png",
+                file_id: 994425,
+            });
+        
+        desktop_state.taskbar.widgets.apps.set(auto_open_apps);
+    });
+</script>
+
+    
+    
+        <link rel="stylesheet" href="./连号区间数_files/content-0.0.2.css">
+    
+    
+
+
+
+
+ 
+    
+
+<div class="panel panel-default fs-gui-taskbar" style="width: 100vw;">
+    <div class="panel-body fs-gui-taskbar-body dropup">
+        <div class="panel panel-default fs-gui-taskbar-begin-menu" style="display: none;">
+    <div class="panel-body" style="padding: 0;">
+        <div class="fs-gui-taskbar-begin-menu-item fs-gui-taskbar-begin-menu-item-file">
+            文件
+        </div>
+        <div class="fs-gui-taskbar-begin-menu-item fs-gui-taskbar-begin-menu-item-application">
+            应用
+        </div>
+        <hr style="height: 1vh; margin: 1vh;">
+        <div class="fs-gui-taskbar-begin-menu-item fs-gui-taskbar-begin-menu-item-settings">
+            设置
+        </div>
+    </div>
+</div>
+        <button class="fs-gui-taskbar-begin pull-left btn btn-default">
+            <img src="./连号区间数_files/favicon(1).ico" alt="开始" title="开始" style="width: 60%;">
+        </button>
+        <div class="fs-gui-taskbar-search pull-left">
+            <span class="glyphicon glyphicon-search fs-gui-taskbar-search-icon"></span>
+            <label for="fs-gui-taskbar-search-field" class="sr-only"></label>
+            <input id="fs-gui-taskbar-search-field" placeholder="在这里输入你要搜索的内容" class="ui-autocomplete-input" autocomplete="off">
+        </div>
+        <div class="fs-gui-taskbar-right">
+            <div class="fs-gui-taskbar-task-list ui-sortable"><li class="btn btn-default pull-left fs-gui-taskbar-task-list-item ui-draggable" style="display: none;"><img src="./连号区间数_files/2220490481555590627-128_UQONKkk.png" class="fs-gui-taskbar-task-list-item-icon-img pull-left" alt="图标"><span>AC Chat</span></li></div>
+            <div class="fs-gui-taskbar-widgets">
+                <div class="fs-gui-taskbar-widgets-clock">
+                    <div class="fs-gui-taskbar-widgets-clock-time">17:33</div>
+                    <div class="fs-gui-taskbar-widgets-clock-date">2021-03-29</div>
+                </div>
+                <div class="fs-gui-taskbar-widgets-apps">
+                    
+                        <div class="fs-gui-taskbar-widgets-apps-item fs-gui-taskbar-widgets-apps-item-994425" title="AC Chat">
+                            <img src="./连号区间数_files/2220490481555590627-128_UQONKkk.png" alt="AC Chat">
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="acwing_page">
+    <nav class="navbar navbar-inverse navbar-fixed-top navbar-expand-lg" style="z-index: 10;">
+        <div class="container">
+            <!-- Header -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    
+                </button>
+                
+                <a class="navbar-brand" href="https://www.acwing.com/">AcWing</a>
+            </div>
+
+            <!-- Items -->
+            <div class="collapse navbar-collapse" id="topNavBar">
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="https://www.acwing.com/about/">首页</a></li>
+                    <li class="active"><a href="https://www.acwing.com/problem/">题库</a></li>
+                    <li class=""><a href="https://www.acwing.com/solution/">题解</a></li>
+                    <li class=""><a href="https://www.acwing.com/blog/">分享</a></li>
+                    <li class=""><a href="https://www.acwing.com/community/">问答</a></li>
+                    <li class=""><a href="https://www.acwing.com/activity/">活动</a></li>
+                    <li class=""><a href="https://www.acwing.com/file_system/file/content/whole/index/content/whole/application/1/">应用</a></li>
+                    <li class=""><a href="https://www.acwing.com/http_wss/danmu/world/">吐槽</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    
+                        <li>
+                            <a href="https://www.acwing.com/user/myspace/notification/1/">
+                                <span class="glyphicon glyphicon-bell" style="font-size: 20px;"></span>
+                                
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.acwing.com/problem/content/1212/#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img class="img-circle" src="./连号区间数_files/72867_sm_49d975f160.jpg" alt="Aruksa 的头像" style="margin: -5px;" width="35px">
+                                &nbsp;
+                                <strong id="id_user_username">Aruksa</strong>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <span style="cursor: pointer;" title="AC币">
+                                        <img src="./连号区间数_files/acb2.png" width="15px" alt="AC币图标" style="margin-left: 20px; margin-bottom: 4px;">
+                                        &nbsp;
+                                        <span class="hidden-sm hidden-md hidden-lg" style="color: white;">0</span>
+                                        <span class="hidden-xs">0</span>
+                                    </span>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="https://www.acwing.com/user/myspace/index/72867/">我的空间</a></li>
+                                <li><a href="https://www.acwing.com/user/profile/index/">个人信息</a></li>
+                                <li><a href="https://www.acwing.com/user/account/changepassword/">修改密码</a></li>
+                                <li class="divider"></li>
+                                <li>
+                                    <form id="signout-form" action="https://www.acwing.com/user/account/signout/" method="post">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="sibEwtbEg45muJZaLcBPc8B57qBwUX5SX6kv3RrnTrmB0Ue6yOlZ8PnFpKO1Vp72">
+                                    </form>
+                                    <a id="signout-link" style="cursor: pointer">登出</a>
+                                    <script>
+                                        $(document).ready(function (){
+                                            $('#signout-link').click(function (){
+                                                $('#signout-form').submit();
+                                            });
+                                        });
+                                    </script>
+                                </li>
+                            </ul>
+                        </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="base_body">
+    <div class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="nice_font problem-content-title">
+                1210. 连号区间数
+            </div>
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active">
+                    <a class="problem-content-sub-btn" href="https://www.acwing.com/problem/content/description/1212/" style="padding-left: 30px; padding-right: 30px;">
+                        <span class="glyphicon glyphicon-list-alt" style="top: 4px;"></span>
+                        &nbsp;
+                        题目
+                    </a>
+                </li>
+                
+                    <li role="presentation" class="">
+                        <a class="problem-content-sub-btn" href="https://www.acwing.com/problem/content/submission/1212/" style="padding-left: 30px; padding-right: 30px;">
+                            <span class="glyphicon glyphicon-list" style="top: 4px;"></span>
+                            &nbsp;
+                            提交记录
+                        </a>
+                    </li>
+                
+                <li role="presentation" class="">
+                    <a class="problem-content-sub-btn" href="https://www.acwing.com/problem/content/discussion/index/1212/1/" style="padding-left: 30px; padding-right: 30px;">
+                        <span class="glyphicon glyphicon-comment" style="top: 4px;"></span>
+                        &nbsp;
+                        讨论
+                    </a>
+                </li>
+                <li role="presentation" class="">
+                    <a class="problem-content-sub-btn" href="https://www.acwing.com/problem/content/solution/1212/1/" style="padding-left: 30px; padding-right: 30px;">
+                        <span class="glyphicon glyphicon-book" style="top: 4px;"></span>
+                        &nbsp;
+                        题解
+                    </a>
+                </li>
+                <li role="presentation" class="">
+                    <a class="problem-content-sub-btn" href="https://www.acwing.com/problem/content/video/1212/" style="padding-left: 30px; padding-right: 30px;">
+                        <span class="glyphicon glyphicon-book" style="top: 4px;"></span>
+                        &nbsp;
+                        视频讲解
+                    </a>
+                </li>
+            </ul>
+            <br>
+            
+    <div class="row">
+        <div class="col-sm-9 col-xs-12">
+            <div class="main-martor main-martor-content" data-field-name="content">
+                <div class="section-martor">
+                    <div class="ui bottom attached tab active martor-preview" data-tab="preview-tab-content">
+                        <p>小明这些天一直在思考这样一个奇怪而有趣的问题：</p>
+<p>在 <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;&amp;#x223C;&lt;/mo&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" role="math" style="width: 3.284em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.711em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.305em, 1002.71em, 2.294em, -999.997em); top: -2.133em; left: 0.003em;"><span class="mrow" id="MathJax-Span-2"><span class="mn" id="MathJax-Span-3" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-4" style="font-family: MathJax_Main; padding-left: 0.263em;">∼</span><span class="mi" id="MathJax-Span-5" style="font-family: MathJax_Math-italic; padding-left: 0.263em;">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.107em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.138em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.941em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn><mo>∼</mo><mi>N</mi></math></span></span><script type="math/tex" id="MathJax-Element-1">1 \sim N</script> 的某个排列中有多少个连号区间呢？</p>
+<p>这里所说的连号区间的定义是：</p>
+<p>如果区间 <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mi&gt;L&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;R&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-6" role="math" style="width: 2.971em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.451em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.253em, 1002.35em, 2.555em, -999.997em); top: -2.133em; left: 0.003em;"><span class="mrow" id="MathJax-Span-7"><span class="mo" id="MathJax-Span-8" style="font-family: MathJax_Main;">[</span><span class="mi" id="MathJax-Span-9" style="font-family: MathJax_Math-italic;">L</span><span class="mo" id="MathJax-Span-10" style="font-family: MathJax_Main;">,</span><span class="mi" id="MathJax-Span-11" style="font-family: MathJax_Math-italic; padding-left: 0.159em;">R</span><span class="mo" id="MathJax-Span-12" style="font-family: MathJax_Main;">]</span></span><span style="display: inline-block; width: 0px; height: 2.138em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.372em; border-left: 0px solid; width: 0px; height: 1.316em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">[</mo><mi>L</mi><mo>,</mo><mi>R</mi><mo stretchy="false">]</mo></math></span></span><script type="math/tex" id="MathJax-Element-2">[L, R]</script> 里的所有元素（即此排列的第 <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;L&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-13" role="math" style="width: 0.836em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.68em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.305em, 1000.63em, 2.294em, -999.997em); top: -2.133em; left: 0.003em;"><span class="mrow" id="MathJax-Span-14"><span class="mi" id="MathJax-Span-15" style="font-family: MathJax_Math-italic;">L</span></span><span style="display: inline-block; width: 0px; height: 2.138em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.941em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>L</mi></math></span></span><script type="math/tex" id="MathJax-Element-3">L</script> 个到第 <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-4-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;R&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-16" role="math" style="width: 0.94em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.784em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.305em, 1000.78em, 2.294em, -999.997em); top: -2.133em; left: 0.003em;"><span class="mrow" id="MathJax-Span-17"><span class="mi" id="MathJax-Span-18" style="font-family: MathJax_Math-italic;">R</span></span><span style="display: inline-block; width: 0px; height: 2.138em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>R</mi></math></span></span><script type="math/tex" id="MathJax-Element-4">R</script> 个元素）递增排序后能得到一个长度为 <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-5-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;R&lt;/mi&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mi&gt;L&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-19" role="math" style="width: 5.211em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.326em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.305em, 1004.27em, 2.398em, -999.997em); top: -2.133em; left: 0.003em;"><span class="mrow" id="MathJax-Span-20"><span class="mi" id="MathJax-Span-21" style="font-family: MathJax_Math-italic;">R</span><span class="mo" id="MathJax-Span-22" style="font-family: MathJax_Main; padding-left: 0.211em;">−</span><span class="mi" id="MathJax-Span-23" style="font-family: MathJax_Math-italic; padding-left: 0.211em;">L</span><span class="mo" id="MathJax-Span-24" style="font-family: MathJax_Main; padding-left: 0.211em;">+</span><span class="mn" id="MathJax-Span-25" style="font-family: MathJax_Main; padding-left: 0.211em;">1</span></span><span style="display: inline-block; width: 0px; height: 2.138em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.184em; border-left: 0px solid; width: 0px; height: 1.066em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>R</mi><mo>−</mo><mi>L</mi><mo>+</mo><mn>1</mn></math></span></span><script type="math/tex" id="MathJax-Element-5">R-L+1</script> 的“连续”数列，则称这个区间连号区间。</p>
+<p>当 <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-6-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-26" role="math" style="width: 1.096em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.888em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.305em, 1000.89em, 2.294em, -999.997em); top: -2.133em; left: 0.003em;"><span class="mrow" id="MathJax-Span-27"><span class="mi" id="MathJax-Span-28" style="font-family: MathJax_Math-italic;">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.107em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.138em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.941em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>N</mi></math></span></span><script type="math/tex" id="MathJax-Element-6">N</script> 很小的时候，小明可以很快地算出答案，但是当 <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-7-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-29" role="math" style="width: 1.096em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.888em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.305em, 1000.89em, 2.294em, -999.997em); top: -2.133em; left: 0.003em;"><span class="mrow" id="MathJax-Span-30"><span class="mi" id="MathJax-Span-31" style="font-family: MathJax_Math-italic;">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.107em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.138em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.941em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>N</mi></math></span></span><script type="math/tex" id="MathJax-Element-7">N</script> 变大的时候，问题就不是那么简单了，现在小明需要你的帮助。</p>
+<h4>输入格式</h4>
+<p>第一行是一个正整数 <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-8-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-32" role="math" style="width: 1.096em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.888em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.305em, 1000.89em, 2.294em, -999.997em); top: -2.133em; left: 0.003em;"><span class="mrow" id="MathJax-Span-33"><span class="mi" id="MathJax-Span-34" style="font-family: MathJax_Math-italic;">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.107em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.138em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.941em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>N</mi></math></span></span><script type="math/tex" id="MathJax-Element-8">N</script>，表示排列的规模。</p>
+<p>第二行是 <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-9-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-35" role="math" style="width: 1.096em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.888em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.305em, 1000.89em, 2.294em, -999.997em); top: -2.133em; left: 0.003em;"><span class="mrow" id="MathJax-Span-36"><span class="mi" id="MathJax-Span-37" style="font-family: MathJax_Math-italic;">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.107em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.138em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.941em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>N</mi></math></span></span><script type="math/tex" id="MathJax-Element-9">N</script> 个不同的数字 <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-10-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-38" role="math" style="width: 1.148em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.94em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.305em, 1000.94em, 2.451em, -999.997em); top: -2.133em; left: 0.003em;"><span class="mrow" id="MathJax-Span-39"><span class="msubsup" id="MathJax-Span-40"><span style="display: inline-block; position: relative; width: 0.94em; height: 0px;"><span style="position: absolute; clip: rect(3.18em, 1000.73em, 4.169em, -999.997em); top: -4.008em; left: 0.003em;"><span class="mi" id="MathJax-Span-41" style="font-family: MathJax_Math-italic;">P<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.107em;"></span></span><span style="display: inline-block; width: 0px; height: 4.013em;"></span></span><span style="position: absolute; top: -3.852em; left: 0.628em;"><span class="mi" id="MathJax-Span-42" style="font-size: 70.7%; font-family: MathJax_Math-italic;">i</span><span style="display: inline-block; width: 0px; height: 4.013em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.138em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.247em; border-left: 0px solid; width: 0px; height: 1.128em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>P</mi><mi>i</mi></msub></math></span></span><script type="math/tex" id="MathJax-Element-10">P_i</script>，表示这 <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-11-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-43" role="math" style="width: 1.096em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.888em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.305em, 1000.89em, 2.294em, -999.997em); top: -2.133em; left: 0.003em;"><span class="mrow" id="MathJax-Span-44"><span class="mi" id="MathJax-Span-45" style="font-family: MathJax_Math-italic;">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.107em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.138em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.941em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>N</mi></math></span></span><script type="math/tex" id="MathJax-Element-11">N</script> 个数字的某一排列。</p>
+<h4>输出格式</h4>
+<p>输出一个整数，表示不同连号区间的数目。</p>
+<h4>数据范围</h4>
+<p><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-12-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;mn&gt;10000&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-46" role="math" style="width: 7.815em; display: inline-block;"><span style="display: inline-block; position: relative; width: 6.513em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.305em, 1006.46em, 2.451em, -999.997em); top: -2.133em; left: 0.003em;"><span class="mrow" id="MathJax-Span-47"><span class="mn" id="MathJax-Span-48" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-49" style="font-family: MathJax_Main; padding-left: 0.263em;">≤</span><span class="mi" id="MathJax-Span-50" style="font-family: MathJax_Math-italic; padding-left: 0.263em;">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.107em;"></span></span><span class="mo" id="MathJax-Span-51" style="font-family: MathJax_Main; padding-left: 0.263em;">≤</span><span class="mn" id="MathJax-Span-52" style="font-family: MathJax_Main; padding-left: 0.263em;">10000</span></span><span style="display: inline-block; width: 0px; height: 2.138em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.247em; border-left: 0px solid; width: 0px; height: 1.128em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn><mo>≤</mo><mi>N</mi><mo>≤</mo><mn>10000</mn></math></span></span><script type="math/tex" id="MathJax-Element-12">1 \le N \le 10000</script>,<br>
+<span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-13-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-53" role="math" style="width: 5.94em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.951em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.305em, 1004.95em, 2.451em, -999.997em); top: -2.133em; left: 0.003em;"><span class="mrow" id="MathJax-Span-54"><span class="mn" id="MathJax-Span-55" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-56" style="font-family: MathJax_Main; padding-left: 0.263em;">≤</span><span class="msubsup" id="MathJax-Span-57" style="padding-left: 0.263em;"><span style="display: inline-block; position: relative; width: 0.94em; height: 0px;"><span style="position: absolute; clip: rect(3.18em, 1000.73em, 4.169em, -999.997em); top: -4.008em; left: 0.003em;"><span class="mi" id="MathJax-Span-58" style="font-family: MathJax_Math-italic;">P<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.107em;"></span></span><span style="display: inline-block; width: 0px; height: 4.013em;"></span></span><span style="position: absolute; top: -3.852em; left: 0.628em;"><span class="mi" id="MathJax-Span-59" style="font-size: 70.7%; font-family: MathJax_Math-italic;">i</span><span style="display: inline-block; width: 0px; height: 4.013em;"></span></span></span></span><span class="mo" id="MathJax-Span-60" style="font-family: MathJax_Main; padding-left: 0.263em;">≤</span><span class="mi" id="MathJax-Span-61" style="font-family: MathJax_Math-italic; padding-left: 0.263em;">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.107em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.138em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.247em; border-left: 0px solid; width: 0px; height: 1.128em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn><mo>≤</mo><msub><mi>P</mi><mi>i</mi></msub><mo>≤</mo><mi>N</mi></math></span></span><script type="math/tex" id="MathJax-Element-13">1 \le P_i \le N</script></p>
+<h4>输入样例1：</h4>
+<pre class="hljs"><code>4
+3 2 4 1
+</code></pre>
+
+<h4>输出样例1：</h4>
+<pre class="hljs"><code>7
+</code></pre>
+
+<h4>输入样例2：</h4>
+<pre class="hljs"><code>5
+3 4 2 5 1
+</code></pre>
+
+<h4>输出样例2：</h4>
+<pre class="hljs"><code>9
+</code></pre>
+
+<h4>样例解释</h4>
+<p>第一个用例中，有 <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-14-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;7&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-62" role="math" style="width: 0.628em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.523em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.305em, 1000.52em, 2.294em, -999.997em); top: -2.133em; left: 0.003em;"><span class="mrow" id="MathJax-Span-63"><span class="mn" id="MathJax-Span-64" style="font-family: MathJax_Main;">7</span></span><span style="display: inline-block; width: 0px; height: 2.138em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.941em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>7</mn></math></span></span><script type="math/tex" id="MathJax-Element-14">7</script> 个连号区间分别是：<span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-15-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-65" role="math" style="width: 19.951em; display: inline-block;"><span style="display: inline-block; position: relative; width: 16.617em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.253em, 1016.51em, 2.555em, -999.997em); top: -2.133em; left: 0.003em;"><span class="mrow" id="MathJax-Span-66"><span class="mo" id="MathJax-Span-67" style="font-family: MathJax_Main;">[</span><span class="mn" id="MathJax-Span-68" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-69" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-70" style="font-family: MathJax_Main; padding-left: 0.159em;">1</span><span class="mo" id="MathJax-Span-71" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-72" style="font-family: MathJax_Main;">,</span><span class="mo" id="MathJax-Span-73" style="font-family: MathJax_Main; padding-left: 0.159em;">[</span><span class="mn" id="MathJax-Span-74" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-75" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-76" style="font-family: MathJax_Main; padding-left: 0.159em;">2</span><span class="mo" id="MathJax-Span-77" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-78" style="font-family: MathJax_Main;">,</span><span class="mo" id="MathJax-Span-79" style="font-family: MathJax_Main; padding-left: 0.159em;">[</span><span class="mn" id="MathJax-Span-80" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-81" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-82" style="font-family: MathJax_Main; padding-left: 0.159em;">3</span><span class="mo" id="MathJax-Span-83" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-84" style="font-family: MathJax_Main;">,</span><span class="mo" id="MathJax-Span-85" style="font-family: MathJax_Main; padding-left: 0.159em;">[</span><span class="mn" id="MathJax-Span-86" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-87" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-88" style="font-family: MathJax_Main; padding-left: 0.159em;">4</span><span class="mo" id="MathJax-Span-89" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-90" style="font-family: MathJax_Main;">,</span><span class="mo" id="MathJax-Span-91" style="font-family: MathJax_Main; padding-left: 0.159em;">[</span><span class="mn" id="MathJax-Span-92" style="font-family: MathJax_Main;">2</span><span class="mo" id="MathJax-Span-93" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-94" style="font-family: MathJax_Main; padding-left: 0.159em;">2</span><span class="mo" id="MathJax-Span-95" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-96" style="font-family: MathJax_Main;">,</span><span class="mo" id="MathJax-Span-97" style="font-family: MathJax_Main; padding-left: 0.159em;">[</span><span class="mn" id="MathJax-Span-98" style="font-family: MathJax_Main;">3</span><span class="mo" id="MathJax-Span-99" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-100" style="font-family: MathJax_Main; padding-left: 0.159em;">3</span><span class="mo" id="MathJax-Span-101" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-102" style="font-family: MathJax_Main;">,</span><span class="mo" id="MathJax-Span-103" style="font-family: MathJax_Main; padding-left: 0.159em;">[</span><span class="mn" id="MathJax-Span-104" style="font-family: MathJax_Main;">4</span><span class="mo" id="MathJax-Span-105" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-106" style="font-family: MathJax_Main; padding-left: 0.159em;">4</span><span class="mo" id="MathJax-Span-107" style="font-family: MathJax_Main;">]</span></span><span style="display: inline-block; width: 0px; height: 2.138em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.372em; border-left: 0px solid; width: 0px; height: 1.316em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo><mo>,</mo><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">]</mo><mo>,</mo><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo stretchy="false">]</mo><mo>,</mo><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo stretchy="false">]</mo><mo>,</mo><mo stretchy="false">[</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo stretchy="false">]</mo><mo>,</mo><mo stretchy="false">[</mo><mn>3</mn><mo>,</mo><mn>3</mn><mo stretchy="false">]</mo><mo>,</mo><mo stretchy="false">[</mo><mn>4</mn><mo>,</mo><mn>4</mn><mo stretchy="false">]</mo></math></span></span><script type="math/tex" id="MathJax-Element-15">[1,1], [1,2], [1,3], [1,4], [2,2], [3,3], [4,4]</script><br>
+第二个用例中，有 <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-16-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;9&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-108" role="math" style="width: 0.628em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.523em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.305em, 1000.47em, 2.294em, -999.997em); top: -2.133em; left: 0.003em;"><span class="mrow" id="MathJax-Span-109"><span class="mn" id="MathJax-Span-110" style="font-family: MathJax_Main;">9</span></span><span style="display: inline-block; width: 0px; height: 2.138em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.941em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>9</mn></math></span></span><script type="math/tex" id="MathJax-Element-16">9</script> 个连号区间分别是：<span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-17-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;5&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mn&gt;5&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;5&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-111" role="math" style="width: 25.784em; display: inline-block;"><span style="display: inline-block; position: relative; width: 21.461em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.253em, 1021.36em, 2.555em, -999.997em); top: -2.133em; left: 0.003em;"><span class="mrow" id="MathJax-Span-112"><span class="mo" id="MathJax-Span-113" style="font-family: MathJax_Main;">[</span><span class="mn" id="MathJax-Span-114" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-115" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-116" style="font-family: MathJax_Main; padding-left: 0.159em;">1</span><span class="mo" id="MathJax-Span-117" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-118" style="font-family: MathJax_Main;">,</span><span class="mo" id="MathJax-Span-119" style="font-family: MathJax_Main; padding-left: 0.159em;">[</span><span class="mn" id="MathJax-Span-120" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-121" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-122" style="font-family: MathJax_Main; padding-left: 0.159em;">2</span><span class="mo" id="MathJax-Span-123" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-124" style="font-family: MathJax_Main;">,</span><span class="mo" id="MathJax-Span-125" style="font-family: MathJax_Main; padding-left: 0.159em;">[</span><span class="mn" id="MathJax-Span-126" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-127" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-128" style="font-family: MathJax_Main; padding-left: 0.159em;">3</span><span class="mo" id="MathJax-Span-129" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-130" style="font-family: MathJax_Main;">,</span><span class="mo" id="MathJax-Span-131" style="font-family: MathJax_Main; padding-left: 0.159em;">[</span><span class="mn" id="MathJax-Span-132" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-133" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-134" style="font-family: MathJax_Main; padding-left: 0.159em;">4</span><span class="mo" id="MathJax-Span-135" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-136" style="font-family: MathJax_Main;">,</span><span class="mo" id="MathJax-Span-137" style="font-family: MathJax_Main; padding-left: 0.159em;">[</span><span class="mn" id="MathJax-Span-138" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-139" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-140" style="font-family: MathJax_Main; padding-left: 0.159em;">5</span><span class="mo" id="MathJax-Span-141" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-142" style="font-family: MathJax_Main;">,</span><span class="mo" id="MathJax-Span-143" style="font-family: MathJax_Main; padding-left: 0.159em;">[</span><span class="mn" id="MathJax-Span-144" style="font-family: MathJax_Main;">2</span><span class="mo" id="MathJax-Span-145" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-146" style="font-family: MathJax_Main; padding-left: 0.159em;">2</span><span class="mo" id="MathJax-Span-147" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-148" style="font-family: MathJax_Main;">,</span><span class="mo" id="MathJax-Span-149" style="font-family: MathJax_Main; padding-left: 0.159em;">[</span><span class="mn" id="MathJax-Span-150" style="font-family: MathJax_Main;">3</span><span class="mo" id="MathJax-Span-151" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-152" style="font-family: MathJax_Main; padding-left: 0.159em;">3</span><span class="mo" id="MathJax-Span-153" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-154" style="font-family: MathJax_Main;">,</span><span class="mo" id="MathJax-Span-155" style="font-family: MathJax_Main; padding-left: 0.159em;">[</span><span class="mn" id="MathJax-Span-156" style="font-family: MathJax_Main;">4</span><span class="mo" id="MathJax-Span-157" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-158" style="font-family: MathJax_Main; padding-left: 0.159em;">4</span><span class="mo" id="MathJax-Span-159" style="font-family: MathJax_Main;">]</span><span class="mo" id="MathJax-Span-160" style="font-family: MathJax_Main;">,</span><span class="mo" id="MathJax-Span-161" style="font-family: MathJax_Main; padding-left: 0.159em;">[</span><span class="mn" id="MathJax-Span-162" style="font-family: MathJax_Main;">5</span><span class="mo" id="MathJax-Span-163" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-164" style="font-family: MathJax_Main; padding-left: 0.159em;">5</span><span class="mo" id="MathJax-Span-165" style="font-family: MathJax_Main;">]</span></span><span style="display: inline-block; width: 0px; height: 2.138em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.372em; border-left: 0px solid; width: 0px; height: 1.316em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo><mo>,</mo><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">]</mo><mo>,</mo><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo stretchy="false">]</mo><mo>,</mo><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo stretchy="false">]</mo><mo>,</mo><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>5</mn><mo stretchy="false">]</mo><mo>,</mo><mo stretchy="false">[</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo stretchy="false">]</mo><mo>,</mo><mo stretchy="false">[</mo><mn>3</mn><mo>,</mo><mn>3</mn><mo stretchy="false">]</mo><mo>,</mo><mo stretchy="false">[</mo><mn>4</mn><mo>,</mo><mn>4</mn><mo stretchy="false">]</mo><mo>,</mo><mo stretchy="false">[</mo><mn>5</mn><mo>,</mo><mn>5</mn><mo stretchy="false">]</mo></math></span></span><script type="math/tex" id="MathJax-Element-17">[1,1], [1,2], [1,3], [1,4], [1,5], [2,2], [3,3], [4,4], [5,5]</script></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 hidden-xs" style="padding-left: 0;top: -20px;">
+            <div class="table-responsive">
+                <table class="table table-striped table-responsive" style="border-left: 1px solid #f0f0f0;">
+                    <tbody>
+                        <tr>
+                            <td style="padding: 15px 8px 15px 8px;">
+                                难度：
+                                <span class="label label-success round" style="float:right;">简单</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px 8px 15px 8px;">
+                                时/空限制：
+                                <span style="float:right;">1s / 64MB</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px 8px 15px 8px;">
+                                总通过数：
+                                <span style="float:right;">2100</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px 8px 15px 8px;">
+                                总尝试数：
+                                <span style="float: right;">3653</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px 8px 15px 8px;">
+                                来源：
+                                <span style="float: right;">第四届蓝桥杯省赛C++B组,第四届蓝桥杯省赛JAVAB组</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px 8px 15px 8px;">
+                                <span class="problem-algorithm-tag" style="cursor: pointer">算法标签<span class="caret"></span></span>
+                                <div class="problem-algorithm-tag-field" style=""><a href="https://www.acwing.com/problem/search/1/?search_content=%E6%9E%9A%E4%B8%BE" style="text-decoration: none;" target="_blank"><span class="problem-algorithm-tag-field-item">枚举</span></a></div>
+                                <script>
+                                    $(document).ready(function () {
+                                        let $tag = $('.problem-algorithm-tag');
+                                        let $field = $('.problem-algorithm-tag-field');
+                                        let keywords = "枚举".replace('，', ',').split(',');
+                                        for (let i = 0; i < keywords.length; i ++ ) {
+                                            let keyword = keywords[i].trim();
+                                            if (keywords) {
+                                                let $span = $(`<a href="/problem/search/1/?search_content=${keyword}"` +
+                                                        `style="text-decoration: none;" target="_blank">` +
+                                                    `<span class="problem-algorithm-tag-field-item">${keyword}</span></a>`);
+                                                $field.append($span);
+                                            }
+                                        }
+
+                                        $tag.click(function () {
+                                            if ($field.is(":visible")) {
+                                                $field.hide();
+                                            } else {
+                                                $field.show();
+                                            }
+                                        });
+                                    });
+                                </script>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <hr>
+    
+
+<div id="code_tool_bar">
+    
+        <button id="open_ac_saber_btn" class="btn btn-link" style="position: relative; left: 10px; top: 10px; font-size: 18px;">
+            挑战模式
+        </button>
+        <script>
+            $('#open_ac_saber_btn').click(function () {
+                desktop_state.window.open_outer_window(
+                    desktop_state.os.builtin.application.applications.ac_saber,
+                    `menu_training_problem&chapter_name=基础知识` +
+                    `&session_name=快速排序&move_right_cnt=0` +
+                    `&move_down_cnt=0&problem_number=1210`
+                );
+            });
+        </script>
+    
+    <button class="btn btn-link pull-right" data-toggle="modal" data-target="#code_editor_confg_modal" title="编辑器设置">
+        <span class="glyphicon glyphicon-cog editor_tool_btn"></span>
+    </button>
+    <button class="btn btn-link pull-right" data-toggle="modal" id="code-editor-refresh-btn" title="代码重置">
+        <span class="glyphicon glyphicon-refresh editor_tool_refresh_btn"></span>
+    </button>
+    <div class="code_editor_option_language form-group" style="float: right; margin: 8px 10px 0 10px;" title="选择编程语言">
+        <select name="language" style="height: 40px; width: 220px; border-radius: 4px;" class="form-control code-editor-option" id="id_language">
+  <option value="1" selected="">C++</option>
+
+  <option value="2">C</option>
+
+  <option value="3">Java</option>
+
+  <option value="4">Python</option>
+
+  <option value="5">Javascript</option>
+
+  <option value="6">Python3</option>
+
+  <option value="8">Go</option>
+
+</select>
+    </div>
+    <div class="modal fade" id="code_editor_confg_modal">
+        <div class="modal-dialog" style="width: 85%; max-width: 600px;">
+            <div class="modal-content" style="margin-top: auto;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        ×
+                    </button>
+                    <div class="modal-title code-editor-option-head">
+                        代码编辑器设置
+                    </div>
+                </div>
+                <hr style="margin: 0 0 10px 0;">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-8 col-xs-12">
+                            <div class="code-editor-option-title">
+                                界面风格
+                            </div>
+                            <div class="code_editor_option_theme visible-xs-block">
+                                <select name="theme_option" style="max-width: 220px; border-radius: 4px; margin-bottom: 10px;" class="form-control code-editor-option" id="id_theme_option">
+  <option value="1" selected="">Textmate</option>
+
+  <option value="2">Monoka</option>
+
+  <option value="3">Eclipse</option>
+
+</select>
+                            </div>
+                            <div class="code-editor-option-description">
+                                对白色界面感到厌倦了吗？可以尝试其他的背景和代码高亮风格。
+                            </div>
+                        </div>
+                        <div class="code_editor_option_theme col-sm-4 hidden-xs">
+                            <select name="theme_option" style="max-width: 220px; border-radius: 4px; margin-bottom: 10px;" class="form-control code-editor-option" id="id_theme_option">
+  <option value="1" selected="">Textmate</option>
+
+  <option value="2">Monoka</option>
+
+  <option value="3">Eclipse</option>
+
+</select>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-8 col-xs-12">
+                            <div class="code-editor-option-title">
+                                编辑类型
+                            </div>
+                            <div class="code_editor_option_key_binding visible-xs-block">
+                                <select name="key_binding_option" style="max-width: 220px; border-radius: 4px; margin-bottom: 10px;" class="form-control code-editor-option" id="id_key_binding_option">
+  <option value="1" selected="">Standard</option>
+
+  <option value="2">Vim</option>
+
+  <option value="3">Emacs</option>
+
+</select>
+                            </div>
+                            <div class="code-editor-option-description">
+                                更喜欢Vim或者Emacs的输入方式吗？我们也为你提供了这些选项。
+                            </div>
+                        </div>
+                        <div class="code_editor_option_key_binding col-sm-4 hidden-xs">
+                            <select name="key_binding_option" style="max-width: 220px; border-radius: 4px; margin-bottom: 10px;" class="form-control code-editor-option" id="id_key_binding_option">
+  <option value="1" selected="">Standard</option>
+
+  <option value="2">Vim</option>
+
+  <option value="3">Emacs</option>
+
+</select>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-8 col-xs-12">
+                            <div class="code-editor-option-title">
+                                缩进长度
+                            </div>
+                            <div class="code_editor_option_tab_size visible-xs-block">
+                                <select name="tab_size_option" style="max-width: 220px; border-radius: 4px; margin-bottom: 10px;" class="form-control code-editor-option" id="id_tab_size_option">
+  <option value="1">2个空格</option>
+
+  <option value="2" selected="">4个空格</option>
+
+  <option value="3">8个空格</option>
+
+</select>
+                            </div>
+                            <div class="code-editor-option-description">
+                                选择代码缩进的长度。默认是4个空格。
+                            </div>
+                        </div>
+                        <div class="code_editor_option_tab_size col-sm-4 hidden-xs">
+                            <select name="tab_size_option" style="max-width: 220px; border-radius: 4px; margin-bottom: 10px;" class="form-control code-editor-option" id="id_tab_size_option">
+  <option value="1">2个空格</option>
+
+  <option value="2" selected="">4个空格</option>
+
+  <option value="3">8个空格</option>
+
+</select>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-8 col-xs-12">
+                            <div class="code-editor-option-title">
+                                代码补全
+                            </div>
+                            <div class="code_editor_option_tab_size visible-xs-block">
+                                <select name="tab_size_option" style="max-width: 220px; border-radius: 4px; margin-bottom: 10px;" class="form-control code-editor-option" id="id_tab_size_option">
+  <option value="1">2个空格</option>
+
+  <option value="2" selected="">4个空格</option>
+
+  <option value="3">8个空格</option>
+
+</select>
+                            </div>
+                            <div class="code-editor-option-description">
+                                写代码疲惫了吗？让我们来帮你一把。
+                            </div>
+                        </div>
+                        <div class="code_editor_option_code_complete col-sm-4 hidden-xs">
+                            <select name="tab_size_option" style="max-width: 220px; border-radius: 4px; margin-bottom: 10px;" class="form-control code-editor-option" id="id_tab_size_option">
+                                <option value="1">无补全</option>
+                                <option value="2" selected="">单词级补全</option>
+                                <option value="3">模板级补全</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <hr style="margin: 10px 0 0 0;">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" style="float: right; border-radius: 5px;">
+                        确定
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <div>
+        <form id="code-eidtor-option-update-language-form" action="https://www.acwing.com/problem/content/code_editor_preference/update/language/" method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="sibEwtbEg45muJZaLcBPc8B57qBwUX5SX6kv3RrnTrmB0Ue6yOlZ8PnFpKO1Vp72">
+        </form>
+        <form id="code-eidtor-option-update-theme-form" action="https://www.acwing.com/problem/content/code_editor_preference/update/theme/" method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="sibEwtbEg45muJZaLcBPc8B57qBwUX5SX6kv3RrnTrmB0Ue6yOlZ8PnFpKO1Vp72">
+        </form>
+        <form id="code-eidtor-option-update-key-binding-form" action="https://www.acwing.com/problem/content/code_editor_preference/update/key_binding/" method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="sibEwtbEg45muJZaLcBPc8B57qBwUX5SX6kv3RrnTrmB0Ue6yOlZ8PnFpKO1Vp72">
+        </form>
+        <form id="code-eidtor-option-update-tab-size-form" action="https://www.acwing.com/problem/content/code_editor_preference/update/tab_size/" method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="sibEwtbEg45muJZaLcBPc8B57qBwUX5SX6kv3RrnTrmB0Ue6yOlZ8PnFpKO1Vp72">
+        </form>
+    </div>
+    <script>
+        let code_editor_name_config_mappings = {
+            "C++": "c_cpp",
+            "C": "c_cpp",
+             "Java": "java",
+            "Python": "python",
+            "Python3": "python",
+            "Javascript": "javascript",
+            "Go": "golang",
+            "Textmate": "textmate",
+            "Monoka": "monokai",
+            "Eclipse": "eclipse",
+            "Standard": "null",
+            "Vim": "vim",
+            "Emacs": "emacs",
+            "2个空格": "2",
+            "4个空格": "4",
+            "8个空格": "8",
+        };
+        let problem_code_show_mappings = {};
+    </script>
+</div>
+<div id="code_editor" class=" ace_editor ace-tm" style="font-size: 12pt; height: 19.1875px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 18px; left: 46px;"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 42px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 42px;"><div class="ace_gutter-cell ace_gutter-active-line " style="height: 19.1875px; top: 0px;">1<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="left: 42px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 1064px; height: 57.5625px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 708px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height: 19.1875px; top: 0px; left: 0px; right: 0px;"></div></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line" style="height: 19.1875px; top: 0px;"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="display: block; top: 0px; left: 4px; width: 9px; height: 19.1875px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 28px; bottom: 0px;"><div class="ace_scrollbar-inner" style="width: 28px; height: 19.1875px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 28px; left: 42px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 28px; width: 1064px;"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div>
+
+    <div>
+        <button id="submit_code_btn" class="btn btn-success" style="float: right; border-radius: 20px; margin: 20px 0 0 20px;">
+            <span class="glyphicon glyphicon-cloud-upload" style="top: 1px;"></span>
+            &nbsp;
+            提交答案
+            &nbsp;
+        </button>
+        <button id="run_code_btn" class="btn btn-default" style="float: right; border-radius: 20px; margin: 20px 0 0 0;">
+            <span class="glyphicon glyphicon-play-circle" style="top: 2px;"></span>
+            &nbsp;
+            调试代码
+            &nbsp;
+        </button>
+    </div>
+    <div id="submit-code-status-block" style="margin-top: 75px; display: none;">
+        <hr>
+        <span class="submit-code-status-label">代码提交状态：</span>
+        <span id="submit-code-status-value-id" class="submit-code-status-value"></span>
+        &nbsp;&nbsp;
+        <img id="submit-code-status-loading-gif-id" src="./连号区间数_files/code_status_loading.gif" width="18px;" style="margin-top: -5px;">
+        <pre id="submit-code-status-compilation-log-id" class="submit-code-status-compilation-log hljs" style="margin-top: 10px; border-radius: 5px; padding: 10px; background-color: #f2dede; border-color: #ebccd1; color: #a94442;">        </pre>
+    </div>
+    <div id="run-code-status-block" class="panel panel-default" style="margin-top: 75px; display: none;">
+        <div class="panel-heading">
+            <span class="submit-code-status-label">代码运行状态：</span>
+            <span id="run-code-status-value-id" class="submit-code-status-value"></span>
+            &nbsp;&nbsp;
+            <img id="run-code-status-loading-gif-id" src="./连号区间数_files/code_status_loading.gif" width="18px;" style="margin-top: -5px;">
+            <button type="button" id="run-code-status-block-remove-btn" class="close">
+                ×
+            </button>
+        </div>
+        <div class="panel-body" style="padding: 25px;">
+            <label for="run-code-stdin" style="font-weight: normal; font-size: 15px;">输入</label>
+            <textarea id="run-code-stdin" class="form-control autofit" maxlength="2000" rows="1" style="background-color: rgb(248, 248, 248); border-radius: 5px; resize: none; font-family: monospace; overflow: hidden; min-height: 40px; height: 52.5333px;">4
+3 2 4 1</textarea>
+            <br>
+            <span style="font-weight: normal; font-size: 15px;">输出</span>
+            <pre id="run-code-stdout" style="background-color: #f8f8f8; border-radius: 5px; margin-top: 5px; min-height: 40px;" class="hljs"></pre>
+            <div id="run-code-expected-stdout-block" style="margin-top: 20px; display: none;">
+                <span style="font-weight: normal; font-size: 15px;">标准答案</span>
+                <pre id="run-code-expected-stdout" style="background-color: #f8f8f8; border-radius: 5px; margin-top: 5px; min-height: 40px;" class="hljs"></pre>
+            </div>
+            <span id="run-code-time" style="display: none;"></span>
+        </div>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+</div>
+    <footer id="acwing_footer" class="footer">
+    <div class="container">
+        <hr>
+        <div class="row">
+            <div class="col-sm-8 copyright">
+                <span>
+                    © 2018-2021 AcWing 版权所有
+                    &nbsp;|&nbsp;
+                    <a href="http://beian.miit.gov.cn/">京ICP备17053197号-1</a>
+                </span>
+            </div>
+            <div class="text-right col-sm-4 region-us">
+                <div class="links">
+                    <a href="https://www.acwing.com/footer/contactus/">联系我们</a>
+                    &nbsp;|&nbsp;
+                    <a href="https://www.acwing.com/footer/faq/">常见问题</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+
+
+
+
+
+
+
+<div id="modal-warning" class="modal modal-message modal-warning fade" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="glyphicon glyphicon-warning-sign"></i>
+            </div>
+            <div id="warning_message_content" class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
+            </div>
+        </div> <!-- / .modal-content -->
+    </div> <!-- / .modal-dialog -->
+</div>
+
+
+    <script>
+        let GLOBAL_PROBLEM_MODE = "normal";
+        let GLOBAL_PROBLEM_RECORD = [];
+        let GLOBAL_PROBLEM_CHALLENGE_MODE_STATUS = 0;   // 0 表示未结束，1表示赢，2表示输
+        
+    </script>
+    
+    
+    <script src="./连号区间数_files/code_editor-0.0.6.js.下载"></script>
+    <script src="./连号区间数_files/debug_code-0.0.21.js.下载"></script><pre style="word-break: break-word; visibility: hidden; white-space: pre-wrap; position: absolute; left: 0px; top: 0px; z-index: -1; width: 1029.6px; font: 14px / 20px monospace; padding: 6px 12px;" class="hljs">4
+3 2 4 1</pre>
+    <script>
+        let PROBLEM_ID = 1212;
+    </script>
+
+
+
+
+
+<script src="./连号区间数_files/copy_with_link.js.下载"></script>
+<script>
+    let article_author = "";
+    if (article_author.length === 0) article_author = "AcWing";
+    let VIDEO_CONTENT_WATERMARK_LOGO_URL = "https://cdn.acwing.com/static/web/img/32X32.ico";
+</script>
+<script src="./连号区间数_files/highlight.min.js.下载"></script>
+<script type="text/x-mathjax-config;executed=true">
+        MathJax.Hub.Config({
+          tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+          showMathMenu: false,
+        });
+</script>
+<script type="text/javascript" src="./连号区间数_files/MathJax.js.下载"></script>
+<script>
+    $('pre').each(function(i, block){
+        hljs.highlightBlock(block);
+    });
+</script>
+
+    <script src="./连号区间数_files/favorite.js.下载"></script>
+    <script src="./连号区间数_files/vote.js.下载"></script>
+    <script type="text/javascript" src="./连号区间数_files/delete-0.0.4.js.下载"></script>
+    <script type="text/javascript" src="./连号区间数_files/add-0.0.4.js.下载"></script>
+    <script type="text/javascript" src="./连号区间数_files/delete-0.0.4.js(1).下载"></script>
+    <script src="./连号区间数_files/vote-0.0.1.js.下载"></script>
+    <script src="./连号区间数_files/collect-0.0.2.js.下载"></script>
+
+<script>
+    
+    
+    window.onbeforeunload = function (ev) {
+
+        
+            let windows = desktop_state.window.windows;
+            for (let i = 0; i < windows.length; i ++ ) {  // 把所有未关闭的窗口关闭
+                if (windows[i]) {
+                    desktop_state.window.close(i);
+                }
+            }
+        
+
+        let notify = false;
+        for (let i = 0; i < onbeforeunload_functions.length; i ++ ){
+            let ret = onbeforeunload_functions[i]();
+            if (ret){
+                notify = true;
+            }
+        }
+        if (notify){
+            return true;
+        }
+    };
+
+    let CLICK_URL_STATUS = "status";
+    let CLICK_URL_COUNT = "count";
+    let CLICK_URL_CLICK = "click";
+    let CLICK_URL = "/" + CLICK_URL_STATUS + "/" + CLICK_URL_COUNT + "/" + CLICK_URL_CLICK + "/";
+</script>
+<script src="./连号区间数_files/click.js.下载"></script>
+
+<ul id="ui-id-1" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" style="display: none;"></ul><div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div class="panel panel-default fs-gui-window ui-draggable ui-resizable" style="left: 10vw; top: 10vh; display: none;">
+    <div class="panel-heading fs-gui-window-heading ui-draggable-handle">
+        <div class="pull-left fs-gui-window-heading-icon">
+            <img class="fs-gui-window-heading-icon-img" src="./连号区间数_files/2220490481555590627-128_UQONKkk.png" alt="图标" height="80%">
+        </div>
+        <div class="pull-left fs-gui-window-heading-title">
+            <span>
+    AC Chat
+</span>
+        </div>
+        <button class="pull-right btn btn-link fs-gui-window-heading-btn fs-gui-window-heading-btn-close" title="关闭">
+            <img class="img-responsive" src="./连号区间数_files/close.png" alt="关闭">
+        </button>
+        <button class="pull-right btn btn-link fs-gui-window-heading-btn fs-gui-window-heading-btn-maximize" title="最大化">
+            <img class="img-responsive" src="./连号区间数_files/maximize.png" alt="最大化">
+        </button>
+        <button class="pull-right btn btn-link fs-gui-window-heading-btn fs-gui-window-heading-btn-minimize" title="最小化">
+            <img class="img-responsive" src="./连号区间数_files/minimize.png" alt="最小化">
+        </button>
+    </div>
+    <div class="panel-body fs-gui-window-body">
+    
+
+<link rel="stylesheet" href="./连号区间数_files/base-0.0.7.css">
+<div id="ac-chat-8a175aa6" class="ac-chat">
+    <div class="ac-chat-nav">
+        <div class="ac-chat-list">
+            <div class="ac-chat-list-me-info">
+                <div class="ac-chat-list-me-info-photo">
+                    <img class="img-circle" src="./连号区间数_files/72867_md_49d975f160.jpg" alt="我的头像" data-user-id="72867">
+                    <span class="glyphicon glyphicon-ok-sign" title="在线"></span>
+                </div>
+                <div class="ac-chat-list-me-info-text">
+                    <div class="ac-chat-list-me-info-text-username">Aruksa</div>
+                    <div class="ac-chat-list-me-info-text-resume"></div>
+                </div>
+            </div>
+            <div class="ac-chat-list-head">
+                <span class="ac-chat-list-head-search-icon glyphicon glyphicon-search"></span>
+                <input class="ac-chat-list-head-search" type="text" placeholder="搜索">
+                <div class="ac-chat-list-head-add" title="加好友">+</div>
+            </div>
+            <div class="ac-chat-menu">
+                <div class="ac-chat-menu-message">
+                    消息
+                    <span class="ac-chat-menu-message-unread-messages" style="display: none;"></span>
+                </div>
+                <div class="ac-chat-menu-friend" style="color: grey;">联系人</div>
+            </div>
+            <div class="ac-chat-list-body"><div><div class="ac-chat-list-body-item">
+                <div class="ac-chat-list-body-item-left">
+                    <img class="img-circle ac-chat-list-body-item-left-photo" src="./连号区间数_files/1_md_36ca3fec62.jpg" alt="yxc的头像" style="filter: grayscale(100%);">
+                    <div class="ac-chat-list-body-item-left-state">
+                        <div class="ac-chat-list-body-item-left-unread_messages" title="未读消息"></div>
+                        <div class="glyphicon glyphicon-ok-sign ac-chat-list-body-item-left-online-status" title="在线" style="display: none;"></div>
+                    </div>
+                </div>
+                <div class="ac-chat-list-body-item-middle-message">
+                    <div class="ac-chat-list-body-item-middle-message-name">yxc</div>
+                    <div class="ac-chat-list-body-item-middle-message-last-message"></div>
+                </div>
+                <div class="ac-chat-list-body-item-right-message">
+                    <div class="ac-chat-list-body-item-right-message-time">21/1/27</div>
+                </div>
+            </div></div></div>
+        </div>
+    </div>
+    <div class="ac-chat-content"><div style="height: 100%; width: 100%; display: none;">
+            <div class="ac-chat-content-message-head">
+                <div class="ac-chat-content-message-head-name"></div>
+            </div>
+            <div class="ac-chat-content-message-body">
+                <div class="ac-chat-content-message-body-history"></div>
+                <div class="ac-chat-content-message-body-edit-field">
+                    <div class="ac-chat-content-message-body-edit-field-head">
+                        <div class="ac-chat-content-message-body-edit-field-head-item item-emoji"><span>😀</span></div>
+                        <!-- div class="ac-chat-content-message-body-edit-field-head-item item-console" style="padding-top: 0.26vh;">
+                            <span class="glyphicon glyphicon-console"></span>
+                        </div -->
+                    </div>
+                    <div class="ac-chat-content-message-body-edit-field-body">
+                        <textarea maxlength="3000" rows="2"></textarea>
+                    </div>
+                    <div class="ac-chat-content-message-body-edit-field-footer">
+                        <button>发送(S)</button>
+                    </div>
+                <div class="panel panel-fault hide emoji-block">
+                <div class="panel-heading emoji-block-head">
+                    <input type="text" name="q" class="form-control emoji-block-head-input" placeholder="搜索表情">
+                </div>
+                <div class="panel-body emoji-block-body">
+                    <ul class="nav nav-tabs emoji-block-body-head">
+                        <li class="active"><a href="https://www.acwing.com/problem/content/1212/#emoji-block-body-content-emoji" data-toggle="tab">😃</a></li>
+                        <li><a href="https://www.acwing.com/problem/content/1212/#emoji-block-body-content-gif" data-toggle="tab">GIF</a></li>
+                    </ul>
+                    <div class="tab-content emoji-block-body-content">
+                        <div class="tab-pane fade in active emoji-block-body-content-nice-scrollbar" id="emoji-block-body-content-emoji"><ul style="padding: 5px; list-style-type: none;"><li style="text-align: center;"><button title="笑嘻嘻" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😀</button><button title="笑嘻嘻的脸，含笑的眼睛" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😁</button><button title="脸上带着喜悦的泪水" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😂</button><button title="开口笑脸" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😃</button><button title="开口笑脸和微笑的眼睛" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😄</button><button title="笑脸淌冷汗" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😅</button><button title="开口笑紧闭的眼睛" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😆</button><button title="眨眼" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😉</button></li><li style="text-align: center;"><button title="面带微笑的眼睛" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😊</button><button title="品尝美味食物表情" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😋</button><button title="太阳镜笑脸" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😎</button><button title="面带心形眼睛" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😍</button><button title="飞吻表情" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😘</button><button title="亲吻表情" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😗</button><button title="含笑亲吻表情" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😙</button><button title="闭眼亲吻表情" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😚</button></li><li style="text-align: center;"><button title="恶魔" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">👿</button><button title="光环笑脸" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😇</button><button title="中性面" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😐</button><button title="面无表情" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😑</button><button title="傻笑" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😏</button><button title="坚持" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😣</button><button title="失望得到宽慰的脸" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😥</button><button title="张着嘴" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😮</button></li><li style="text-align: center;"><button title="安静的脸" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😯</button><button title="困" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😪</button><button title="疲惫" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😫</button><button title="熟睡" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😴</button><button title="安心" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😌</button><button title="吐舌头" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😛</button><button title="吐舌头，眨眼眼" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😜</button><button title="闭眼吐舌头" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😝</button></li><li style="text-align: center;"><button title="垂头丧气" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😒</button><button title="冷汗" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😓</button><button title="沉思" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😔</button><button title="困惑" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😕</button><button title="惊讶" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😲</button><button title="戴口罩" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😷</button><button title="被打败" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😖</button><button title="失望" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😞</button></li><li style="text-align: center;"><button title="忧伤" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😟</button><button title="面带胜利" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😤</button><button title="哭泣的脸" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😢</button><button title="大声哭泣的脸" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😭</button><button title="张嘴哭" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😦</button><button title="痛苦" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😧</button><button title="恐惧" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😨</button><button title="狰狞" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😬</button></li><li style="text-align: center;"><button title="淌冷汗" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😰</button><button title="尖叫恐惧" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😱</button><button title="红扑扑的脸蛋" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😳</button><button title="晕" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😵</button><button title="噘嘴" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😡</button><button title="愤怒" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😠</button><button title="笑嘻嘻的猫脸，含笑的眼睛" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😸</button><button title="弓起的二头肌" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">💪</button></li><li style="text-align: center;"><button title="指向左边" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">👈</button><button title="指向右边" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">👉</button><button title="指向上边" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">☝</button><button title="指向下边" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">👇</button><button title="胜利的手势" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">✌</button><button title="OK的手势" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">👌</button><button title="竖起大拇指" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">👍</button><button title="不看好" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">👎</button></li><li style="text-align: center;"><button title="西瓜" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🍉</button><button title="猫脸上带着喜悦的泪水" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😹</button><button title="开口笑的猫脸" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😺</button><button title="笑嘻嘻的猫脸，心形的眼睛" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😻</button><button title="苦笑的猫脸" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😼</button><button title="正在亲吻的猫脸，闭着的眼睛" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😽</button><button title="噘嘴的猫脸" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😾</button><button title="流眼泪的猫脸" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">😿</button></li><li style="text-align: center;"><button title="疲倦的猫脸" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🙀</button><button title="NO手势的人" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🙅</button><button title="OK手势的人" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🙆</button><button title="正在鞠躬的人" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🙇</button><button title="捂着眼睛的猴子" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🙈</button><button title="捂着耳朵的猴子" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🙉</button><button title="捂着嘴巴的猴子" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🙊</button><button title="举起手的人" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🙋</button></li><li style="text-align: center;"><button title="举起双手" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🙌</button><button title="皱着眉头的人" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🙍</button><button title="噘嘴的人" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🙎</button><button title="双手合十的人" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🙏</button><button title="躺在床上的人" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🛌</button><button title="捂脸的人" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🤦‍</button><button title="厨师" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">👨‍🍳‍</button><button title="科学家" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">👨‍🔬</button></li><li style="text-align: center;"><button title="技术专家" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">👨‍💻</button><button title="艺术家" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">👨‍🎨</button><button title="警察" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">👮‍</button><button title="吸血鬼" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🧛‍</button><button title="消防员" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">👨‍🚒</button><button title="圣诞老人" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🎅</button><button title="教师" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">👨‍🏫</button><button title="美人鱼" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🧜‍</button></li><li style="text-align: center;"><button title="僵尸" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🧟‍</button><button title="一堆便便" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">💩</button><button title="婴儿" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">👶</button><button title="走路" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🚶‍</button><button title="奔跑" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🏃‍</button><button title="耸肩" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🤷‍‍</button><button title="跳舞" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">💃</button><button title="攀岩" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🧗‍</button></li><li style="text-align: center;"><button title="冲浪" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🏄‍</button><button title="划船" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🚣‍‍</button><button title="游泳" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🏊‍‍</button><button title="骑马" class="btn btn-link emoji_btn_relative" style="width: 31.62px;">🏇</button></li></ul></div>
+                        <div class="tab-pane fade emoji-block-body-content-nice-scrollbar" id="emoji-block-body-content-gif"></div>
+                    </div>
+                </div>
+            </div></div>
+            </div>
+            </div></div>
+</div>
+
+<script>
+    let namespace_builtin_8a175aa6 = {
+        start: function (wid) {
+            let file_id = desktop_state.window.windows[wid].file_id;
+            let urls = {
+                gif_data_url: "/http_wss/chat/gif_data/",
+                gif_search_url: "/http_wss/chat/gif_search/",
+            };
+            if (typeof AcChat === 'undefined') {
+                $.getScript("https://cdn.acwing.com/static/web/js/file_system/file/content/whole/application/ac_chat/dist/ac_chat-0.0.8.min.js").done(function () {
+                    let obj = new AcChat("ac-chat-8a175aa6", wid, urls);
+                    desktop_state.taskbar.widgets.apps.apps.get(file_id).obj = obj;
+                    desktop_state.window.windows[wid].obj = obj;
+                });
+            } else {
+                let obj = new AcChat("ac-chat-8a175aa6", wid, urls);
+                desktop_state.taskbar.widgets.apps.apps.get(file_id).obj = obj;
+                desktop_state.window.windows[wid].obj = obj;
+            }
+        },
+    };
+</script>
+</div>
+<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: MathJax_Math-italic, sans-serif;"></div></div></body></html>
